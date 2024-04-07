@@ -1,0 +1,28 @@
+# 원하는 물품의 종류, 수량 dict 만들고 slicing 사용하여 같으면 +1
+
+def solution(want, number, discount):
+    answer = 0
+    want_dic = {}
+
+    for a,b in zip(want, number):
+        want_dic[a] = b
+
+    for i in range(len(discount) - 9):
+        temp_dic = {}
+        temp_lst = discount[i:i+10]
+        for j in temp_lst:
+            value = temp_dic.get(j)
+            if value == None:
+                temp_dic[j] = 1
+            else:
+                temp_dic[j] += 1
+
+        if want_dic == temp_dic:
+            answer += 1
+
+    return answer
+
+print(solution(["banana", "apple", "rice", "pork", "pot"],
+               [3, 2, 2, 2, 1],
+               ["chicken", "apple", "apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana"]))
+          # counter모듈 사용하기
