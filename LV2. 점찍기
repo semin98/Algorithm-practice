@@ -1,0 +1,19 @@
+def solution(k, d):
+    answer = 0
+    dot = []
+    
+    for i in range(d // k + 1):
+        dot.append(i * k)
+        
+    for j in dot:
+        for k in dot:
+            if (j ** 2 + k ** 2) ** 0.5 <= d:
+                answer += 1
+            
+        
+    return answer
+
+print(solution(2, 4))
+print(solution(1, 5))
+
+# 시간 복잡도 n^2로 시간 초과 발생..
