@@ -1,0 +1,46 @@
+//최종 위치로 dict를 만들어 len을 사용하다 보니
+//(1, 0 ) -> (0, 0)이나 (-1, 0) -> (0, 0)을 하나로 쳐서 잘못됨
+
+def solution(dirs):
+    distance = {}
+    now = [0,0]
+    
+    for i in dirs:
+        if i == "U":
+            if now[1] + 1 <=5:
+                now[1] += 1
+                if str(now) in distance:
+                    distance[str(now)] += 1
+                else:
+                    distance[str(now)] = 1
+            
+        elif i == "D":
+            if now[1] - 1>= -5:
+                now[1] -= 1
+                if str(now) in distance:
+                    distance[str(now)] += 1
+                else:
+                    distance[str(now)] = 1
+            
+        elif i == "L":
+            if now[0] - 1 >= -5:
+                now[0] -= 1
+                if str(now) in distance:
+                    distance[str(now)] += 1
+                else:
+                    distance[str(now)] = 1
+            
+        elif i == "R":
+            if now[0] + 1<= 5:
+                now[0] += 1
+                if str(now) in distance:
+                    distance[str(now)] += 1
+                else:
+                    distance[str(now)] = 1
+            
+    
+    return len(distance)
+
+print(solution("ULURRDLLU"))
+print(solution("LULLLLLLU"))
+
