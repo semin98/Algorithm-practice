@@ -1,0 +1,20 @@
+// 성공
+// stack에 0을 대입한건 line 10 에러 방지용
+def solution(board, moves):
+    answer = 0
+    stack = [0]
+    
+    for i in moves:
+        for j in range(len(board[i-1])):
+            if board[j][i - 1] != 0:
+                if board[j][i - 1] == stack[-1]:
+                    stack.pop()
+                    answer += 2
+                    board[j][i - 1] = 0
+                    break
+                else:
+                    stack.append(board[j][i - 1])
+                    board[j][i - 1] = 0
+                    break
+    
+    return answer
