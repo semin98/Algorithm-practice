@@ -1,0 +1,16 @@
+from itertools import combinations
+
+cards, max_num = map(int, input().split())
+
+card_list = list(map(int, input().split()))
+
+nCr = list(combinations(card_list, 3))
+answer = []
+
+for i in nCr:
+    if sum(i) <= max_num:
+        answer.append(sum(i))
+
+print(max(answer))
+
+조합을 써서 가능한 카드의 종류와 sum으로 총합 구했습니다
