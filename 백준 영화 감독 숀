@@ -1,0 +1,14 @@
+num = int(input())
+
+start = 666
+cnt = 1
+
+while (cnt != num):
+    start += 1
+    if '666' in str(start):
+        cnt += 1
+    
+print(start)
+
+666에서 시작해서 count가 인풋이랑 같아질때까지 반복스
+현재 번호를 문자열로 바꿔서 666있는지 확인
