@@ -1,0 +1,25 @@
+from collections import deque
+
+def solution(cards1, cards2, goal):
+    answer = ''
+    card1 = []
+    card2 = []
+
+    for i in cards1:
+        card1.append(goal.index(i))
+
+    for j in cards2:
+        card2.append(goal.index(j))
+
+    for i in range(1, len(card1)):
+        if card1[i - 1] > card1[i]:
+            return 'No'
+        
+    for j in range(1, len(card2)):
+        if card2[j - 1] > card2[j]:
+            return 'No'
+
+    return 'Yes'
+
+이렇게 했더니 20, 21, 24, 25에서 런타임 에러가 나왔다 
+아마 카드 수가 1개인 테스트 케이스 때문에 그런것 같다 다시 고쳐보자
