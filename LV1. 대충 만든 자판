@@ -23,3 +23,33 @@ def solution(keymap, targets):
     return answer
 
 ts 11, 12, 14~ 실패 이유 찾는중
+
+=> 반례는 간단했다 targets가 하나라도 실패하면 -1 반환이 아니라 그 인덱스만 -1 반환이였다
+
+
+####################################################################33
+수정 후
+
+def solution(keymap, targets):
+    answer = []
+
+    word_dic = {}
+
+    for key in keymap:
+        for i in range(len(key)):
+            if key[i] in word_dic:
+                word_dic[key[i]] = min(word_dic[key[i]], i + 1)
+            else:
+                word_dic[key[i]] = i + 1
+    
+    for target in targets:
+        total = 0
+        for i in range(len(target)):
+            if target[i] not in word_dic:
+                return [-1]
+            
+            total += word_dic[target[i]]
+
+        answer.append(total)
+
+    return answer
