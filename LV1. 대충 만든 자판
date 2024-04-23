@@ -1,0 +1,25 @@
+def solution(keymap, targets):
+    answer = []
+
+    word_dic = {}
+
+    for key in keymap:
+        for i in range(len(key)):
+            if key[i] in word_dic:
+                word_dic[key[i]] = min(word_dic[key[i]], i + 1)
+            else:
+                word_dic[key[i]] = i + 1
+    
+    for target in targets:
+        total = 0
+        for i in range(len(target)):
+            if target[i] not in word_dic:
+                return [-1]
+            
+            total += word_dic[target[i]]
+
+        answer.append(total)
+
+    return answer
+
+ts 11, 12, 14~ 실패 이유 찾는중
