@@ -1,0 +1,13 @@
+num = int(input())
+    divisor = []
+    for i in range(1, int(num ** (1 / 2)) + 1):
+        if num % i == 0:
+            divisor.append(i)
+    
+    res = num // divisor[-1]
+    ans = res + divisor[-1] - 2
+
+    print(f'#{test_case} {ans}')
+
+    1~num까지 약수 구하기엔 시간복잡도 효율 낮음
+    + 걷는 횟수 최솟값은 n * m - 2
