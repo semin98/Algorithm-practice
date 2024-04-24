@@ -1,0 +1,13 @@
+alpha = 'abcdefghijklmnopqrstuvwxyz'
+
+    a = str(input())
+    ans = 0
+    for i in range(len(a)):
+        if a[i] == alpha[i]:
+            ans += 1
+        else:
+            break
+
+    print(f'#{test_case} {ans}')
+
+    2번째 ts가 왜 24인지 계속 고민하다 문제 다시 읽어보니 틀리면 거기서 끝이라고 적혀있습니다
