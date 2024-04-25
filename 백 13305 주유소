@@ -1,0 +1,19 @@
+city = int(input())
+dis = list(map(int, input().split()))
+price = list(map(int, input().split()))
+
+ans = 0
+
+least_price = price[0]
+
+for i in range(len(dis)):
+    if least_price > price[i]:
+        least_price = price[i]
+    
+    ans += least_price * dis[i]
+
+print(ans)
+
+도시 개수는 쓸데 없는것 같아서 사용 안했습니다
+최저 가격 비교해가면서 가는 거리 계산하면 될것 같아서 이리 만들었슴다
+
