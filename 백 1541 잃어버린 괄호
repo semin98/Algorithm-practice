@@ -1,0 +1,33 @@
+N = input()
+num = []
+cal = []
+chk = 0
+
+for i in range(len(N)):
+    if N[i] == '-' or N[i] == '+':
+        cal.append(N[i])
+        num.append(N[chk:i])
+        chk = i + 1
+    
+    if i == len(N) - 1:
+        num.append(N[chk:])
+
+ans = int(num[0])
+for c in range(1, len(cal)):
+    if cal[c-1] == '-':
+        cal[c] = '-'
+
+for i in range(len(cal)):
+    if cal[i] == '-':
+        ans -= int(num[i + 1])
+    else:
+        ans += int(num[i + 1])
+
+print(ans)
+
+일단 숫자와 연산 기호를 분리해야해서 나눔
+조건 보면 같은 연산 기호는 안나온다를 통해서 -가 나오면 뒤에 +를 -로 고쳐주면 최소값이 나옴
+for 문으로 - 뒤에 있는 +를 -로 고쳐주고 들어있는 숫자들 처리
+
+예쁘지는 않지만 어떻게든 풀었음에 의의를 
+한잔해
