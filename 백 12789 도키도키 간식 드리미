@@ -1,0 +1,22 @@
+num = int(input())
+waiting = list(map(int, input().split()))
+stk = []
+snack = 1
+
+while waiting:
+    if waiting[0] == snack:
+        snack += 1
+        waiting.pop(0)
+    else:
+        stk.append(waiting.pop(0))
+    
+a = sorted(stk, reverse = True)
+
+if stk == a or not stk:
+    print('Nice')
+
+else:
+    print('Sad')
+
+ts는 맞는데 돌리면 4~50%대에서 오류가 생김
+왜 일까
