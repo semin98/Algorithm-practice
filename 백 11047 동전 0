@@ -1,0 +1,23 @@
+N, K = map(int, input().split())
+
+coins = []
+for _ in range(N):
+    coin_val = int(input())
+    coins.append(coin_val)
+
+coins.sort(reverse= True)
+
+ans = 0
+i = 0
+while K > 0:
+    remain = K // coins[i]
+    if remain >= 1:
+        K -= coins[i] * remain
+        ans += remain
+
+    i += 1
+
+print(ans)
+
+혹시 모르니 역순으로 정렬해주고 큰것 부터 나뉘어지면 갯수 더하고 나머지 만들어주기
+아니면 패스하는 식으로 만듦
