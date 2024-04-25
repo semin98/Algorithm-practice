@@ -1,0 +1,10 @@
+N = int(input())
+
+atm = list(map(int, input().split()))
+atm.sort()
+ans = 0
+
+for i in range(len(atm)):
+    ans += int(atm[i]) * (N - i)
+
+print(ans)
