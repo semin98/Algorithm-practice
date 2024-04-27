@@ -1,0 +1,19 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+
+    memory = list(map(int, input()))
+   
+    l = len(memory)
+    ans = 0
+
+    if memory[0] == 1:
+        ans += 1
+
+    for i in range(1, l):
+        if memory[i] != memory[i - 1]:
+            ans += 1
+
+    print(f'#{test_case} {ans}')
+
+    index마다 돌면서 마지막 index까지 계속 교환하려다가 다시 생각해보니 앞 뒤가 다르면 +1하는 방식으로 접근
