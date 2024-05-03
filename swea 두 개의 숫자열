@@ -1,0 +1,29 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    N, M = map(int, input().split())
+
+    arr1 = list(map(int, input().split()))
+    arr2 = list(map(int, input().split()))
+    ans = 0
+
+    dif = M - N
+
+    if N > M:
+        arr1, arr2 = arr2, arr1
+        dif = N - M
+
+    for i in range(dif+ 1):
+        tot = 0
+        new_B = arr2[i : i + N]
+
+        for j in range(min(N, M)):
+            tot += arr1[j] * new_B[j]
+        
+        if tot > ans:
+            ans = tot
+
+
+    print(f'#{test_case} {ans}')
+
+    처음에 길이가 작은거 큰거 순으로 나오는 줄 알고 짰다가 아니여서 급하게 고쳤습니다 
