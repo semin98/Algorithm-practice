@@ -18,8 +18,10 @@ for test_case in range(1, T + 1):
 
     print(f'#{test_case}')
     for a, b, c in zip(arr1, arr2, arr3):
-        print(f'{"".join(map(str, a))} {"".join(map(str, b))}  {"".join(map(str, c))}')
+        print(f'{"".join(map(str, a))} {"".join(map(str, b))} {"".join(map(str, c))}')
 
 output결과를 비교해봤는데 내 눈에는 분명 다 똑같은데 10개 중 2개만 맞았다고 한다
 
     
+=> 마지막 print문에 2칸 띄어써서 그런거였다
+왜 기본 ts는 맞았는지는 모르겠다
