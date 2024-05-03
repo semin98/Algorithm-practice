@@ -1,0 +1,25 @@
+def change(arr):
+    arr = arr[::-1]
+    new_arr = list(zip(*arr))
+    return new_arr
+
+T = int(input())
+
+for test_case in range(1, T + 1):
+    N = int(input())
+
+    board = [list(map(int, input().split())) for _ in range(N)]
+    
+    temp = []
+
+    arr1 = change(board)
+    arr2 = change(arr1)
+    arr3 = change(arr2)
+
+    print(f'#{test_case}')
+    for a, b, c in zip(arr1, arr2, arr3):
+        print(f'{"".join(map(str, a))} {"".join(map(str, b))}  {"".join(map(str, c))}')
+
+output결과를 비교해봤는데 내 눈에는 분명 다 똑같은데 10개 중 2개만 맞았다고 한다
+
+    
