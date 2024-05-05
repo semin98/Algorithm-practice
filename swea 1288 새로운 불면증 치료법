@@ -1,0 +1,21 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    N = int(input())
+    cnt = 1
+    num = [i for i in range(10)]
+    temp = []
+
+    while temp != num:
+        now = N * cnt
+        cnt += 1
+        lst = list(map(int, str(now)))
+        for i in lst:
+            if i not in temp:
+                temp.append(i)
+        
+        temp.sort()
+    ans = (cnt -1) * N
+    print(f'#{test_case} {ans}')
+
+정답과 결과값이 이상하다라는 생각이 들때는 문제를 잘읽어보자 
