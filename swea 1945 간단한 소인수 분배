@@ -1,0 +1,16 @@
+T = int(input())
+
+for test_case in range(1, T + 1):
+    div = int(input())
+    num = [2, 3, 5, 7, 11]
+    ans = ''
+
+    for i in num:
+        temp = 0
+        while div % i == 0:
+            div //= i
+            temp += 1
+
+        ans += str(temp) + ' '
+
+    print(f'#{test_case} {ans}')
