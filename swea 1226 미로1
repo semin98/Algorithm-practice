@@ -1,0 +1,39 @@
+def bfs(si, sj, ei, ej):
+    q = []
+    v = [[0] * 16 for _ in range(16)]
+    v[si][sj] = 1
+    q.append((si, sj))
+
+    while q:
+        ci, cj = q.pop(0)
+
+        if ci == ei and cj == ej:
+            return 1
+
+        for ni, nj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            di, dj = ci + ni, cj + nj
+            if 0 <= di < 16 and 0 <= dj < 16 and v[di][dj] == 0 and board[di][dj] == 0:
+                q.append((di, dj))
+                v[di][dj] = 1
+
+    return 0
+
+T = 10
+
+for test_case in range(1, T + 1):
+    num = int(input())
+    board = [list(map(int,input())) for _ in range(16)]
+    ans = 0
+    for i in range(16):
+        for j in range(16):
+            if board[i][j] == 2:
+                si, sj = i, j
+                board[i][j] = 0
+            
+            if board[i][j] == 3:
+                ei, ej = i, j
+                board[i][j] = 0
+
+    ans = bfs(si, sj, ei, ej)
+
+    print(f'#{test_case} {ans}')
