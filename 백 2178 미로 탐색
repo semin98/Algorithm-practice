@@ -1,0 +1,27 @@
+def bfs(si, sj, cnt):
+    q = []
+    v = [[0] * M for _ in range(N)]
+
+    q.append((si, sj, cnt))
+
+    while q:
+        ci, cj, cc = q.pop(0)
+        v[ci][cj] = 1
+
+        if ci == N - 1 and cj == M - 1:
+            return cc
+        
+        for di, dj in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+            ni, nj , nc = ci + di, cj + dj, cc + 1
+            if 0 <= ni < N and 0 <= nj < M and v[ni][nj] == 0 and board[ni][nj] == 1:
+                v[ni][nj] = 1
+                q.append((ni, nj, nc))
+
+
+N, M = map(int, input().split())
+
+board = [list(map(int, input())) for _ in range(N)]
+si = sj = cnt = 0
+ans = bfs(si, sj, cnt)
+
+print(ans + 1)
