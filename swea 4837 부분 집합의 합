@@ -1,0 +1,25 @@
+def dfs(idx, sm, cnt):
+    global ans
+
+    if cnt == N and sm == K:
+        ans += 1
+        return
+    elif cnt == N:
+        return
+
+    if idx + 1 <= 12:
+        dfs(idx + 1, sm + arr[idx], cnt + 1)
+        dfs(idx + 1, sm, cnt)
+
+
+
+T = int(input())
+for test_case in range(1, T + 1):
+    T = 12
+    N, K = map(int, input().split())
+    arr = [i for i in range(1, T + 1)]
+    ans = 0
+
+    dfs(0, 0, 0)
+
+    print(f'#{test_case} {ans}')
