@@ -1,0 +1,23 @@
+def dfs(i, sm):
+    global ans
+    if ans <= sm:
+        return 
+
+    if i == 12:
+        ans = min(sm, ans)
+
+    if 0 <= i < 12:
+        dfs(i + 1, sm + arr[i] * day)
+        dfs(i + 3, sm + three_m)
+        dfs(i + 1, sm + one_m)
+
+T = int(input())
+
+for test_case in range(1, T + 1):
+    day,one_m, three_m, year = map(int, input().split())
+    arr = list(map(int, input().split()))
+    ans = 3000 * 365
+    dfs(0, 0)
+
+    ans = min(ans, year)
+    print(f'#{test_case} {ans}')
