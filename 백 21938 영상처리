@@ -1,0 +1,43 @@
+from collections import deque
+import sys
+
+sys.setrecursionlimit(10**9)
+input = sys.stdin.readline
+
+def bfs(si, sj):
+    q = deque()
+    q.append((si, sj))
+    v[si][sj] = 1
+
+    while q:
+        ci, cj = q.popleft()
+
+        for di, dj in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+            ni, nj = ci + di, cj + dj
+            if 0 <= ni < N and 0 <= nj < M and v[ni][nj] == 0 and new_arr[ni][nj] == 255:
+                q.append((ni, nj))
+                v[ni][nj] = 1
+
+N, M = map(int, input().split())
+
+arr = [list(map(int, input().split())) for _ in range(N)]
+T = int(input())
+
+new_arr = [[0] * M for _ in range(N)]
+v = [[0] * M for _ in range(N)]
+ans = 0
+
+for i in range(N):
+    for j in range(M):
+        temp = sum(arr[i][3 * j: 3 * j + 3])
+        if temp >= T * 3:
+            new_arr[i][j] = 255
+        else:
+            new_arr[i][j] = 0
+
+for i in range(N):
+    for j in range(M):
+        if v[i][j] == 0 and new_arr[i][j] == 255:
+            bfs(i, j)
+            ans += 1
+print(ans)
