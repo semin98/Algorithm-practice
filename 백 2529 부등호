@@ -1,0 +1,31 @@
+def dfs(i, a , sm):
+    global mn, mx
+
+    if a == N:
+        mn = min(str(mn), sm)
+        mx = max(mx, int(sm))
+        return 
+
+    for j in range(10):
+        if v[j] == 0 and arr[a] == '<' and i < j:
+            v[j] = 1
+            dfs(j, a + 1, sm + str(j))
+            v[j] = 0
+        elif v[j] == 0 and arr[a] == '>' and i > j:
+            v[j] = 1
+            dfs(j, a + 1, sm + str(j))
+            v[j] = 0
+
+N = int(input())
+arr = list(map(str, input().split()))
+mn = 9876543
+mx = 0
+
+v = [0] * 10
+for i in range(10):
+    v[i] = 1
+    dfs(i, 0 , str(i))
+    v[i] = 0
+
+print(mx)
+print(mn)
