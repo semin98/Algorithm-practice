@@ -1,0 +1,42 @@
+from collections import deque
+
+def solution(land):
+    answer = 0
+    n = len(land)
+    m = len(land[0])
+
+    def bfs(si, sj):
+        cnt = 1
+        q = deque()
+        q.append((si, sj))
+
+        while q:
+            ci, cj = q.popleft()
+
+            for di, dj in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+                ni, nj = ci + di, cj + dj
+                if 0 <= ni < n and 0 <= nj < m and land[ni][nj] == 1 and v[ni][nj] == 0:
+                    v[ni][nj] = 1
+                    q.append((ni, nj))
+                    cnt += 1
+
+        return cnt
+
+    for j in range(m):
+        v = [[0] * m for _ in range(n)]
+        tmp = 0
+        for i in range(n):
+            if land[i][j] == 1 and v[i][j] == 0:
+                v[i][j] = 1
+                tmp += bfs(i, j)
+
+            answer = max(answer, tmp)
+
+
+    return answer
+
+print(solution([[0, 0, 0, 1, 1, 1, 0, 0], [0, 0, 0, 0, 1, 1, 0, 0], [1, 1, 0, 0, 0, 1, 1, 0], [1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 1, 1]]))
+
+
+// deque를 썻는데도 효율성 테스트에서 다 시간초과가 떳다....
+나머지 테케는 다 맞긴 했는데 스읍
