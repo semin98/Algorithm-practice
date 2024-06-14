@@ -1,0 +1,32 @@
+def dfs(start, current, price, cnt):
+    global ans
+
+    if cnt == N: # 처음 도시로 돌아가기(길이 있을 때만)
+        if arr[current][start]:
+            price += arr[current][start]
+            ans = min(ans, price)
+        return
+
+    if price > ans: # 최소 가격보다 크면 가지 치기
+        return
+
+    for i in range(N):
+        if not visited[i] and arr[current][i]:
+            visited[i] = 1
+            dfs(start, i, price + arr[current][i], cnt + 1)
+            visited[i] = 0
+
+
+N = int(input())
+arr = [list(map(int, input().split())) for _ in range(N)]
+ans = 10000000 * 10 # 가능한 최댓값(최솟값을 구해야 해서)
+visited = [0] * N
+
+for i in range(N):
+    visited[i] = 1
+    dfs(i, i, 0, 1)
+    visited[i] = 0
+    
+print(ans)
+
+# 백트래킹
