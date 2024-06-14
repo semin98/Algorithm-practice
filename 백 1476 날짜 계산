@@ -1,0 +1,20 @@
+E, S, M = map(int, input().split())
+a, b, c = 0, 0, 0
+ans = 0
+
+while True:
+    if a == E and b == S and c == M:
+        print(ans)
+        break
+    a, b, c = a + 1, b + 1, c + 1
+    if a > 15:
+        a -= 15
+    if b > 28:
+        b -= 28
+    if c > 19:
+        c -= 19
+
+    ans += 1
+
+
+E, S ,M이 최대값이 지나면 1로 돌아오기 때문에 0으로 시작해서 1씩 더해나가다가 입력값과 같아 졌을때 ans를 반환
